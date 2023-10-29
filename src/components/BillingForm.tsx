@@ -32,16 +32,18 @@ const BillingForm = ({
         if (url) window.location.href = url
         if (!url) {
           toast({
-            title: 'There was a problem...',
-            description: 'Please try again in a moment',
+            title: 'Il y a un problème...',
+            description: 'Veuillez réessayer dans un instant',
             variant: 'destructive',
           })
         }
       },
     })
 
+    
+
   return (
-    <MaxWidthWrapper className='max-w-5xl'>
+    <MaxWidthWrapper>
       <form
         className='mt-12'
         onSubmit={(e) => {
@@ -50,10 +52,11 @@ const BillingForm = ({
         }}>
         <Card>
           <CardHeader>
-            <CardTitle>Subscription Plan</CardTitle>
+          <CardTitle >Subscription Plan</CardTitle>
+
             <CardDescription>
-              You are currently on the{' '}
-              <strong>{subscriptionPlan.name}</strong> plan.
+            Vous êtes actuellement sur le{' '}
+            <strong>{subscriptionPlan.name}</strong> plan.
             </CardDescription>
           </CardHeader>
 
@@ -63,15 +66,19 @@ const BillingForm = ({
                 <Loader2 className='mr-4 h-4 w-4 animate-spin' />
               ) : null}
               {subscriptionPlan.isSubscribed
-                ? 'Manage Subscription'
-                : 'Upgrade to PRO'}
+                ? 'Gérer mon abonnement'
+                : 'Passer à Pro'}
             </Button>
+
+
+
+            
 
             {subscriptionPlan.isSubscribed ? (
               <p className='rounded-full text-xs font-medium'>
                 {subscriptionPlan.isCanceled
-                  ? 'Your plan will be canceled on '
-                  : 'Your plan renews on'}
+                  ? 'Votre forfait sera annulé le '
+                  : 'Votre forfait se renouvelle le'}
                 {format(
                   subscriptionPlan.stripeCurrentPeriodEnd!,
                   'dd.MM.yyyy'
