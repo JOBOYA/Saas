@@ -40,6 +40,12 @@ const Navbar = () => {
 
    
       <MobileNav isAuth={!!user}  />
+{ !!user && <div className="sm:hidden">
+    <LogoutLink>
+      <span className='text-black hover:bg-gray-200 rounded px-2 py-1 hover:shadow-md'>Déconnexion</span>
+    </LogoutLink>
+</div> }
+
 
 
       
@@ -103,10 +109,7 @@ const Navbar = () => {
         
               <ModeToggle  />
               <Contact />
-              <LogoutLink className='logout-link'>
-  <span className='text-black hover:bg-gray-200 rounded px-2 py-1 hover:shadow-md'>Déconnexion
-  </span>
-</LogoutLink>
+              
 
               </>
             )}
