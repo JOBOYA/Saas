@@ -13,14 +13,19 @@ import { ArrowRight } from 'lucide-react'
 import UserAccountNav from './UserAccountNav'
 import MobileNav from './MobileNav'
 import { ModeToggle } from './ui/toggle'
-//import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server'
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server'
+
+
+
+
 
 
 const Navbar = () => {
   
   const { getUser } = getKindeServerSession()
   const user = getUser()
-  
+
+ 
   
   return (
     <nav className='sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all navbar'>
@@ -33,8 +38,13 @@ const Navbar = () => {
         
       </Link>
 
+   
+      <MobileNav isAuth={!!user}  />
 
-      <MobileNav isAuth={!!user}/>
+
+      
+
+
   
 
 
@@ -65,6 +75,7 @@ const Navbar = () => {
                   
                 </RegisterLink>
                 <ModeToggle  />
+              
               </>
             ) : (
               <>
@@ -76,7 +87,8 @@ const Navbar = () => {
                   })}>
                  Tableau de bord
                 </Link>
-
+               
+               
                 <UserAccountNav
                   name={
                     !user.given_name || !user.family_name
@@ -85,16 +97,22 @@ const Navbar = () => {
                   }
                   email={user.email ?? ''}
                   imageUrl={user.picture ?? ''}
+                  
                 />
-          
-                
+           
+        
               <ModeToggle  />
               <Contact />
+              <LogoutLink className='logout-link'>
+  <span className='text-black hover:bg-gray-200 rounded px-2 py-1 hover:shadow-md'>Déconnexion
+  </span>
+</LogoutLink>
+
               </>
             )}
           </div>
         </div>
-       
+      
       </MaxWidthWrapper>
       
     </nav>

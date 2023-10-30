@@ -141,3 +141,11 @@
 #menuToggle:checked ~ .menu {
   display: block;
 }
+
+
+/* Votre fichier CSS */
+@media (min-width: 640px) {  /* ajustez la taille en fonction de votre design */
+  .logout-link {
+    display: none;
+  }
+}
