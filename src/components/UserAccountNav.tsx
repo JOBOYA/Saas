@@ -82,7 +82,7 @@ const UserAccountNav = async ({
 
         <DropdownMenuItem asChild>
           {subscriptionPlan?.isSubscribed ? (
-            <Link href='https://billing.stripe.com/p/login/00g8x42sy1p2c8g5kk'>
+            <Link href='/dashboard/billing'>
             Gérer l&apos;abonnement
           </Link>
           
