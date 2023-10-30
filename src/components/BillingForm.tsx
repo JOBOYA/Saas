@@ -41,12 +41,22 @@ const BillingForm = ({
 
     const handleFormSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      
+    
+      const stripeUrl = process.env.NEXT_PUBLIC_STRIPE_BILLING_URL;
+    
+      if (!stripeUrl) {
+        toast({
+          title: "Il y a un problème...",
+          description: "L'URL de Stripe n'est pas définie",
+          variant: 'destructive',
+        });
+        return;
+      }
+    
       if (subscriptionPlan.isSubscribed) {
-        // Si l'utilisateur est abonné, rediriger vers la page de gestion Stripe
-        window.location.href = "https://billing.stripe.com/p/login/00g8x42sy1p2c8g5kk";
+        // Utilisation de la variable d'environnement pour l'URL Stripe
+        window.location.href = stripeUrl;
       } else {
-        // Si l'utilisateur n'est pas abonné, exécuter le code pour passer à Pro
         createStripeSession();
       }
     };
