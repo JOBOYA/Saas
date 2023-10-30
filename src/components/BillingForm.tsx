@@ -1,5 +1,3 @@
-'use client'
-
 import { getUserSubscriptionPlan } from '@/lib/stripe'
 import { useToast } from './ui/use-toast'
 import { trpc } from '@/app/_trpc/client'
@@ -26,19 +24,6 @@ const BillingForm = ({
 }: BillingFormProps) => {
   const { toast } = useToast()
 
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (subscriptionPlan.isSubscribed) {
-      // Si l'utilisateur est abonné, rediriger vers la page de gestion Stripe
-      window.location.href = process.env.STRIPE_BILLING_URL!;
-    } else {
-      // Si l'utilisateur n'est pas abonné, exécuter le code pour passer à Pro
-      createStripeSession();
-    }
-  };
-
   const { mutate: createStripeSession, isLoading } =
     trpc.createStripeSession.useMutation({
       onSuccess: ({ url }) => {
@@ -52,6 +37,20 @@ const BillingForm = ({
         }
       },
     })
+
+
+    const handleFormSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      
+      if (subscriptionPlan.isSubscribed) {
+        // Si l'utilisateur est abonné, rediriger vers la page de gestion Stripe
+        window.location.href = "https://billing.stripe.com/p/login/00g8x42sy1p2c8g5kk";
+      } else {
+        // Si l'utilisateur n'est pas abonné, exécuter le code pour passer à Pro
+        createStripeSession();
+      }
+    };
+  
 
     
 
