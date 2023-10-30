@@ -82,9 +82,10 @@ const UserAccountNav = async ({
 
         <DropdownMenuItem asChild>
           {subscriptionPlan?.isSubscribed ? (
-            <Link href='/dashboard/billing'>
-              Gérer l&apos;abonnement
-            </Link>
+            <Link href='https://billing.stripe.com/p/login/00g8x42sy1p2c8g5kk'>
+            Gérer l&apos;abonnement
+          </Link>
+          
           ) : (
             <Link href='/pricing'>
               <span className='text-black hover:bg-gray-200 rounded px-2 py-1 hover:shadow-md'>Mettre à niveau{' '}</span>
