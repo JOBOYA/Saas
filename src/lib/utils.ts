@@ -48,7 +48,7 @@ export function constructMetadata({
       creator: "jojolabricole"
     },
     icons,
-    metadataBase: new URL('https://saas-ruby.vercel.app'),
+    metadataBase: new URL('https://plumechat.com'),
     themeColor: '#FFF',
     ...(noIndex && {
       robots: {
