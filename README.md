@@ -2,7 +2,6 @@
 
 Built with the Next.js 13.5 App Router, tRPC, TypeScript, Prisma & Tailwind
 
-![Project Image]([https://github.com/joboya/SaaS/public/thumbnail.png](https://github.com/JOBOYA/Saas/blob/a9fa69eaa95f14b1151659cf51c8abf12a74c57f/public/dashboard-preview.png)
 
 
 ## Features
